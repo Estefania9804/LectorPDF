@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Texto a Voz de PDFs</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Generador de Texto a Voz para PDFs</h1>
+    </header>
+    <main>
+        <section class="upload-section">
+            <label for="pdfFile">Sube tu archivo PDF:</label>
+            <input type="file" id="pdfFile" accept="application/pdf">
+            <button id="extractText">Extraer Texto</button>
+        </section>
+        <section class="text-output">
+            <textarea id="textContent" readonly placeholder="El texto extraído aparecerá aquí..."></textarea>
+        </section>
+        <section class="tts-controls">
+            <button id="play">Reproducir</button>
+            <button id="pause">Pausar</button>
+            <button id="stop">Detener</button>
+        </section>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
