@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Formulario de Retroalimentación</title>
+    <link rel="stylesheet" href="estilos_formulario.css"> </head>
+<body>
+    <main>
+        <section class="form-container">
+            <h1>Formulario de Retroalimentación</h1>
+            <form action="https://formsubmit.co/ttextoavozparapdfs@gmail.com" method="POST">
+                <label for="contraste">¿El contraste de colores facilitó la lectura del texto?</label>
+                <select id="contraste" name="contraste" required>
+                    <option value="">Seleccione una opción</option>
+                    <option>Muy claro</option>
+                    <option>Claro</option>
+                    <option>Poco claro</option>
+                    <option>No entendible</option>
+                </select>
+
+                <label for="facilidad-pdf">¿Qué tan fácil fue subir un archivo PDF?</label>
+                <select id="facilidad-pdf" name="facilidad_pdf" required>
+                    <option value="">Seleccione una opción</option>
+                    <option>Muy fácil</option>
+                    <option>Fácil</option>
+                    <option>Difícil</option>
+                    <option>No lo logré</option>
+                </select>
+
+                <label for="activar-voz">¿Comprendió fácilmente cómo activar la lectura en voz?</label>
+                <select id="activar-voz" name="activar_voz" required>
+                    <option value="">Seleccione una opción</option>
+                    <option>Sí</option>
+                    <option>No</option>
+                    <option>Tuve dudas al principio</option>
+                </select>
+
+                <label for="claridad-voz">¿Cómo calificaría la claridad de la voz generada por la herramienta?</label>
+                <select id="claridad-voz" name="claridad_voz" required>
+                    <option value="">Seleccione una opción</option>
+                    <option>Muy clara y entendible</option>
+                    <option>Clara, pero algo robótica</option>
+                    <option>Difícil de entender</option>
+                </select>
+
+                <label for="utilidad">¿Qué tan útil le pareció la herramienta para acceder a la información del PDF?</label>
+                <select id="utilidad" name="utilidad" required>
+                    <option value="">Seleccione una opción</option>
+                    <option>Muy útil</option>
+                    <option>Útil</option>
+                    <option>Poco útil</option>
+                    <option>No me sirvió</option>
+                </select>
+
+                <label for="mejoras">¿Qué mejoras le gustaría ver en futuras versiones de la herramienta?</label>
+                <textarea id="mejoras" name="mejoras" rows="4" placeholder="Escriba aquí sus sugerencias..." required></textarea>
+
+                <button type="submit">Enviar retroalimentación</button>
+            </form>
+        </section>
+    </main>
+</body>
+</html>
