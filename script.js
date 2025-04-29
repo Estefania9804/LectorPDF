@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let isPaused = false;
     let lines = [];
     let currentLineIndex = 0;
-    let paragraphElements = []; // Guardará referencias a los párrafos
+    let paragraphElements = [];
 
     extractTextButton.addEventListener("click", async () => {
         if (fileInput.files.length === 0) {
@@ -31,23 +31,16 @@ document.addEventListener("DOMContentLoaded", () => {
                 for (let i = 1; i <= pdf.numPages; i++) {
                     const page = await pdf.getPage(i);
                     const textContentObj = await page.getTextContent();
-                    
-                    // Extraer solo los strings y unirlos
+
                     let pageText = textContentObj.items.map(item => item.str).join(" ");
-
-                    // 1️⃣ Reparar palabras separadas por guion al final de línea
                     pageText = pageText.replace(/-\s+/g, "");
-
-                    // 2️⃣ Eliminar espacios dobles y caracteres extraños
                     pageText = pageText.replace(/\s+/g, " ").trim();
-
-                    // 3️⃣ Agregar salto de línea después de cada oración
                     pageText = pageText.replace(/([.?!])\s+/g, "$1\n\n");
 
                     extractedText += pageText + "\n\n";
                 }
 
-                lines = extractedText.split("\n").filter(line => line.trim() !== ""); // Eliminar líneas vacías
+                lines = extractedText.split("\n").filter(line => line.trim() !== "");
                 displayHighlightableText();
             } catch (error) {
                 console.error("Error al extraer texto del PDF:", error);
@@ -60,7 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function displayHighlightableText() {
         highlightContainer.innerHTML = "";
-        paragraphElements = []; // Reiniciar referencias
+        paragraphElements = [];
 
         let paragraph = "";
         let paragraphNode;
@@ -148,5 +141,28 @@ document.addEventListener("DOMContentLoaded", () => {
         isPaused = false;
         currentLineIndex = 0;
         paragraphElements.forEach(p => p.classList.remove("highlight"));
+    });
+
+    //  Accesibilidad por teclado
+    document.addEventListener("keydown", (event) => {
+        const key = event.key.toLowerCase();
+
+        if (key === "s") {
+            fileInput.click(); // Abrir selector de archivos
+        } else if (key === "e") {
+            extractTextButton.click(); // Extraer texto
+        } else if (key === "p") {
+            playButton.click(); // Reproducir
+        } else if (key === " ") {
+            event.preventDefault(); // Prevenir scroll al presionar espacio
+            if (!isPaused) {
+                pauseButton.click(); // Pausar
+            } else {
+                speechSynthesis.resume(); // Reanudar
+                isPaused = false;
+            }
+        } else if (key === "r") {
+            stopButton.click(); // Reiniciar lectura
+        }
     });
 });

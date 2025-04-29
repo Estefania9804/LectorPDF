@@ -27,6 +27,27 @@ header {
     font-weight: bold;
 }
 
+/* ⬇️ Mejora de visibilidad para el selector de archivo */
+#pdfFile {
+    font-size: 1rem;  /* Aumenta el tamaño de la fuente */
+    padding: 8px 10px;
+    border: 2px solid #1F00BD;
+    border-radius: 5px;
+    background-color: #e8e8ff;
+    cursor: pointer;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+    max-width: 90%;
+    margin-top: 0.5rem;
+}
+
+#pdfFile:hover,
+#pdfFile:focus {
+    background-color: #d0d0ff;
+    border-color: #000407;
+    outline: none;
+}
+
+/* Estilo del contenedor de texto extraído */
 #highlightContainer {
     overflow-y: auto;
     max-height: 400px;
@@ -50,6 +71,7 @@ header {
     background-color: #FFFF00;
 }
 
+/* Estilos de los botones */
 button {
     margin: 10px;
     padding: 15px 25px;

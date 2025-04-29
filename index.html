@@ -1,31 +1,46 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Texto a Voz de PDFs</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="script.js"></script>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="script.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
 </head>
+
 <body>
-    <header>
-        <h1>Generador de Texto a Voz para PDFs</h1>
+    <header role="banner">
+        <h1 id="main-title">Generador de Texto a Voz para PDFs</h1>
     </header>
-    <main>
-        <section class="upload-section">
-            <label for="pdfFile">Sube tu archivo PDF:</label>
-            <input type="file" id="pdfFile" accept="application/pdf">
-            <button id="extractText">Extraer Texto</button>
+
+    <main role="main">
+        <section class="upload-section" aria-labelledby="uploadLabel">
+            <label id="uploadLabel" for="pdfFile">Sube tu archivo PDF:</label>
+            <input type="file" id="pdfFile" accept="application/pdf" aria-describedby="uploadHint" />
+            <div id="uploadHint" style="font-size: 0.9em;">Presiona "S" para abrir el selector de archivos</div>
+            <button id="extractText" aria-label="Extraer texto del archivo PDF">Extraer Texto</button>
         </section>
-        <section class="text-output">
-            <div id="highlightContainer" style="white-space: pre-wrap;"></div>
+
+        <section class="text-output" aria-labelledby="textOutputTitle">
+            <h2 id="textOutputTitle" class="sr-only">Texto extraído del archivo PDF</h2>
+            <div id="highlightContainer"
+                 role="region"
+                 aria-live="polite"
+                 aria-atomic="true"
+                 tabindex="0"
+                 style="white-space: pre-wrap;">
+            </div>
         </section>
-        <section class="tts-controls">
-            <button id="play">Reproducir</button>
-            <button id="pause">Pausar</button>
-            <button id="stop">Reiniciar audio</button>
+
+        <section class="tts-controls" aria-labelledby="controlsTitle">
+            <h2 id="controlsTitle" class="sr-only">Controles de reproducción de texto</h2>
+            <button id="play" aria-label="Reproducir texto (tecla P)">Reproducir</button>
+            <button id="pause" aria-label="Pausar lectura (barra espaciadora)">Pausar</button>
+            <button id="stop" aria-label="Reiniciar la lectura (tecla R)">Reiniciar audio</button>
         </section>
-    </main>
+
+        <button onclick="window.open('formulario.html', '_blank');">Formulario de retroalimentación</button>
+        </main>
 </body>
 </html>
